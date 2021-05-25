@@ -1,0 +1,85 @@
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class multiplewindow {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		 
+		   /*
+		   * 1.Open the Chrome Browser
+		   * 2.Navigate to the URL https://demoqa.com/browser-windows
+		   * 3.Maximize the window
+		   * 4.Print Parent Windows Hnadle Value
+		   * 5.Click on "New window" 3 times
+		   * 6.Print value of all window handles
+		   * 7.Switching to windows
+		   * 8.Navigating to Google.com
+		   * 9.Maximize the page 
+		   * 10.Switch to parent window
+		   * 11.Close the parent window
+		   * 12.switch back to other window
+		   * 13.Quit the browser
+		   */
+		
+		 // open the chrome browser
+	    System.setProperty("webdriver.chrome.driver","C://work//chromedriver.exe");
+		
+        WebDriver driver = new ChromeDriver();
+        
+       // Navigate the url  
+      driver.get("https://demoqa.com/browser-windows");
+    	
+      // Max 
+       driver.manage().window().maximize();
+    
+     
+		  // print parent window handle 
+	  	String parentwindowhandle = driver.getWindowHandle();
+	  	System.out.println("the parent window handle is" + " " + parentwindowhandle);
+	
+		
+		   //click 3 times
+		for (int i=1; i<=3; i++)
+		 {
+			driver.findElement(By.xpath("//button[normalize-space()='New Window']")).click();
+		
+			long millis = 4000;
+		   Thread.sleep(millis);
+		 }
+		
+		   // print the window handles
+		 Set<String> windowhandles = driver.getWindowHandles();
+		
+		 String lastwindowhandle = "";
+		
+		for (String handle:windowhandles )
+		 {   
+			  // switching
+			System.out.println("The window handles are " + handle);
+			driver.switchTo().window(handle);
+			
+			  // Navigating to the google 
+			long millis = 4000;
+			Thread.sleep(millis);
+			driver.get("https://www.google.com.tr/");
+			driver.manage().window().maximize();
+		  }
+      
+		   // Close parent window first
+		 long millis= 4000;
+		 Thread.sleep(millis);
+		 driver.switchTo().window(parentwindowhandle);
+		 driver.close();
+		
+		  //switch to the ather windows
+		Thread.sleep(millis);
+		driver.switchTo().window(lastwindowhandle);
+		driver.quit();
+	
+	}
+
+}
