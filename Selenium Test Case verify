@@ -2,7 +2,7 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class selniumtutorial5 {
+public class selniumverify {
     public static void main(String[] args) {
         //Open  the Chrome browser
        System.setProperty("webdriver.chrome.driver","C://work//chromedriver.exe");
