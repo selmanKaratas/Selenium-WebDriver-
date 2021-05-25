@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class seleniumtutorials2 {
     public static void main(String[] args) {
         //Open the chrome browser
-        System.setProperty("webdriver.chrome.driver", "D://selenium jars and drivers//drivers//chromedriver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C://work//chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
         //max the chrome browser
