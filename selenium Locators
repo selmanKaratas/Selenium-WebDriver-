@@ -3,7 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class seleniumtutorials2 {
+public class seleniumlactors {
     public static void main(String[] args) {
         //Open the chrome browser
         System.setProperty("webdriver.chrome.driver","C://work//chromedriver.exe");
