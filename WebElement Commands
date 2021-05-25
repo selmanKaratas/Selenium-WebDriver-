@@ -1,0 +1,79 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class webelementtest {
+
+	public static void main(String[] args) throws InterruptedException {
+  
+  
+		/*  1.Launch a Chrome Browser
+		    2.Open the URL
+		    3.Enter username and password
+        4.clear username and password
+		    5.Submit login button
+		    6.Get text
+		    7.Get location
+		    8.Get size
+        9.Get tag name 
+        10. to print Number of links present of the webpage
+        11.Check if the login button is displayed
+        12.Check if the login button is enabled
+        13.Check if the login button is selected
+		 */
+// here we go :)
+		System.setProperty("webdriver.chrome.driver","C://work//chromedriver.exe");
+	   WebDriver driver = new ChromeDriver();
+        
+    // Navigate the url  
+    driver.get("https://demoqa.com/browser-windows"); 
+    
+     // Max the window
+     driver.manage().window().maximize();
+     
+     //URL of the page 
+   String urlofthepage = driver.getCurrentUrl();
+   System.out.println("The URL of the Page is"+ urlofthepage);
+   
+   if(urlofthepage.equals("https://demoqa.com/browser-windows"))
+   {
+      System.out.println("the URL is verified");
+	} else {
+	      System.out.println("the URL is not verified");
+	}
+   //Title of the page 
+   String title = driver.getTitle();
+   System.out.println("The title of the page is"+ " " +title );
+   
+   // verify
+   if(title.equals("ToolsQA"))
+   {
+	      System.out.println("the title is verified");
+		} else {
+		      System.out.println("the title is not verified");
+		}
+    
+   // length of the title
+   int titlelength=driver.getTitle().length();
+   System.out.println("the length of the title is" + " " + titlelength);
+   
+   // pagesource
+   String ps = driver.getPageSource();
+   System.out.println("The page source is"+ ps);
+   
+   // length of the pagesource 
+   int pslength = driver.getPageSource().length();
+   System.out.println("The length of the pagesource is"+" "+ pslength);
+	   
+   // click()
+   driver.findElement(By.xpath("//button[normalize-space()='New Tab']")).click();
+   
+   //close ()
+   Thread.sleep(5000); 
+  // ! driver.close() and driver.quit() are total different 
+  
+   //quit 
+  driver.quit();
+ 
+   }
+}
