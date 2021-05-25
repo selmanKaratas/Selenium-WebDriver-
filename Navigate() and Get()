@@ -1,0 +1,55 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Navigation {
+	
+	public static void main(String[] args) throws InterruptedException   {
+		// TODO Auto-generated method stub
+		
+		/*  1.Launch a Chrome Browser
+		    2.Open https://wordpress.com/ [Navigate to command]
+		    3.Maximize the window
+		    4.Click on 'Get Started' [xpath]
+		    5.Come back to Home page [back command]
+		    6.Again go back to Get started page [Forward Command]
+		    7.Refresh the Browser [ Refresh Command]
+		    8.Close the Browser [ Close command]
+		 */
+		
+		 System.setProperty("webdriver.chrome.driver", "C://work//chromedriver.exe" );
+			WebDriver driver = new ChromeDriver();
+			
+			// Navigate to the page 
+			/* The difference between these two methods comes not from their behavior, but from the behavior in the way the application works and how browser deal with it.
+               navigate().to() navigates to the page by changing the URL like doing forward/backward navigation. Whereas, get() refreshes the page to changing the URL.
+               So, in cases where application domain changes, both the method behaves similarly. That is, page is refreshed in both the cases. But, in single-page applications,
+               while navigate().to() do not refreshes the page, get() do.i used in this test case the navigate() method.
+		 */
+			driver.navigate().to("https://wordpress.com/");
+		
+			//max
+			driver.manage().window().maximize();
+			
+			// click on the get started
+			driver.findElement(By.xpath("//a[normalize-space()='Get Started']")).click();
+			
+			//back
+			long millis = 4000;
+			Thread.sleep(millis );
+			driver.navigate().back();
+			System.out.println("the page navigated back");
+			// forward 
+			Thread.sleep(millis);
+			driver.navigate().forward();
+			System.out.println("the page navigated forward");
+            
+			//refresh
+			Thread.sleep(millis);
+			driver.navigate().refresh();
+			
+			// close the browser 
+			Thread.sleep(millis);
+			driver.close();	
+	}
+	}
