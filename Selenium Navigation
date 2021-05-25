@@ -1,0 +1,63 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Navigation {
+	
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		/*  1.Launch a Chrome Browser
+		    2.Open https://www.amazon.de/
+		    3.Maximize the window
+		    4.Navigate to URL( https://www.ebay.com/)
+		    5.Enter some values in the text boxes
+		    6.Refresh the page
+		    7.Navigate back to amazon
+		    8.Navigate forward to ebay
+		    9.Close the Browser
+		 */
+		 System.setProperty("webdriver.chrome.driver", "C://work//chromedriver.exe" ); // chrome gidecek bu ona ayarli 
+			WebDriver driver = new ChromeDriver();
+			
+			//open the amazon page
+			driver.get("https://www.amazon.de/");
+			System.out.println("opening the amazon page through driver.get()");
+			//max
+			driver.manage().window().maximize();
+			
+			// Navigate to the abay page
+			driver.navigate().to("https://www.ebay.de/");
+			System.out.println("opening the ebay page through driver.navigate.to()");
+
+			// enter some value 
+			driver.findElement(By.xpath("//input[@id='gh-ac']")).sendKeys("Radsport");
+		    
+			//refresh the browser 
+			long millis = 3000;
+			try {
+				Thread.sleep(millis);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			driver.navigate().refresh();
+			System.out.println("Refresh the browser");
+			
+			
+			// navigate back to amazon
+			Thread.sleep(millis);
+			driver.navigate().back();
+	System.out.println("The page is navigated back to amazon");
+	
+			// Navigate Forward to ebay
+   Thread.sleep(millis);
+	driver.navigate().forward();
+	System.out.println("the page is navigated forward");
+	
+    // close the browser
+	Thread.sleep(millis);
+	driver.close(); 
+			
+}
+	}
